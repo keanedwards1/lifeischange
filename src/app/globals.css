@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --surface: #F7F5F0;
+  --surface-strong: #FDFCFA;
+  --surface-warm: #EEE8DF;
+  --ink: #201E1B;
+  --muted: #74706A;
+  --brand: #201E1B;
+  --brand-strong: #111009;
+  --brand-soft: #E6E2DB;
+  --accent: #8C6A4A;
+  --outline: #E0DBD4;
+}
+
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-warm: var(--surface-warm);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-outline: var(--outline);
+  --font-sans: var(--font-inter, "Inter", system-ui, sans-serif);
+  --font-display: var(--font-fraunces, Georgia, serif);
+}
+
+* {
+  border-color: var(--outline);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+/* Custom text selection */
+::selection {
+  background-color: var(--surface-warm);
+  color: var(--ink);
+}
+
+/* Smooth focus rings */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Animated underlines for inline links */
+.link-underline {
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover {
+  background-size: 100% 1px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+}
+
+/* ── Decorative layers ── */
+
+/* Ghost display text — large faint background word */
+.ghost-word {
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+  font-family: var(--font-display);
+  font-style: italic;
+  line-height: 1;
+  color: var(--ink);
+  opacity: 0.028;
+  white-space: nowrap;
+}
+
+/* Section with a faint vertical rule on the left */
+.ruled-left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--outline) 15%, var(--outline) 85%, transparent);
+}
+
+/* ── Animations ── */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fade-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.fade-in {
+  animation: fade-in 500ms ease both;
+}
+
+.slide-down {
+  animation: slide-down 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Scroll-reveal (JS-driven) ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
