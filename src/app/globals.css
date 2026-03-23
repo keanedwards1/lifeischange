@@ -4,12 +4,13 @@
   --surface: #F7F5F0;
   --surface-strong: #FDFCFA;
   --surface-warm: #EEE8DF;
-  --ink: #201E1B;
+  --ink: #1A1714;
   --muted: #74706A;
-  --brand: #201E1B;
-  --brand-strong: #111009;
+  --brand: #1A1714;
+  --brand-strong: #0E0C0A;
   --brand-soft: #E6E2DB;
-  --accent: #8C6A4A;
+  --accent: #A0522D;
+  --accent-soft: #F2E8DF;
   --outline: #E0DBD4;
 }
 
@@ -23,6 +24,7 @@
   --color-brand-strong: var(--brand-strong);
   --color-brand-soft: var(--brand-soft);
   --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-outline: var(--outline);
   --font-sans: var(--font-inter, "Inter", system-ui, sans-serif);
   --font-display: var(--font-fraunces, Georgia, serif);
@@ -107,6 +109,16 @@ h4 {
 }
 
 /* ── Animations ── */
+
+@keyframes drift {
+  0%   { transform: translateX(0px); }
+  50%  { transform: translateX(30px); }
+  100% { transform: translateX(0px); }
+}
+
+.drift {
+  animation: drift 18s ease-in-out infinite;
+}
 
 @keyframes fade-up {
   from {

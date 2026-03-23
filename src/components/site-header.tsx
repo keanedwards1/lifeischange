@@ -13,6 +13,7 @@ function itemIsActive(href: string, pathname: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number } | null>(null);
@@ -20,8 +21,9 @@ export function SiteHeader() {
   const linkRefs = useRef<Map<string, HTMLAnchorElement>>(new Map());
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -32,14 +34,11 @@ export function SiteHeader() {
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) setMobileOpen(false);
-    };
+    const handler = (e: MediaQueryListEvent) => { if (e.matches) setMobileOpen(false); };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
 
-  // Animated active indicator
   useEffect(() => {
     const nav = navRef.current;
     if (!nav) return;
@@ -53,16 +52,21 @@ export function SiteHeader() {
 
   const navItems = NAV_ITEMS.filter((i) => i.href !== "/connect");
 
+  // On home, float over hero until scrolled; on other pages always show pill
+  const floating = isHome && !scrolled;
+
   return (
     <>
       <header
-        className={`sticky top-0 z-50 flex justify-center transition-all duration-500 ${
-          scrolled ? "py-3" : "py-5"
-        }`}
+        className={`z-50 flex justify-center transition-all duration-500 ${
+          isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+        } ${floating ? "py-5" : "py-3"}`}
       >
         <div
           className={`mx-4 flex w-full max-w-3xl items-center justify-between gap-2 rounded-2xl px-5 transition-all duration-500 ${
-            scrolled
+            floating
+              ? "bg-transparent py-3.5 shadow-none ring-0"
+              : scrolled
               ? "bg-surface-strong/90 py-3 shadow-lg shadow-ink/8 ring-1 ring-ink/6 backdrop-blur-xl"
               : "bg-surface-strong/70 py-3.5 shadow-sm shadow-ink/4 ring-1 ring-ink/4 backdrop-blur-md"
           }`}
@@ -70,7 +74,7 @@ export function SiteHeader() {
           {/* Logo */}
           <Link
             href="/"
-            className="shrink-0 font-display text-base text-ink"
+            className={`shrink-0 font-display text-base transition-colors duration-500 ${floating ? "text-white" : "text-ink"}`}
             onClick={() => setMobileOpen(false)}
           >
             Life Is Change
@@ -82,8 +86,7 @@ export function SiteHeader() {
             aria-label="Primary"
             className="relative hidden items-center gap-0.5 md:flex"
           >
-            {/* Sliding active indicator */}
-            {indicatorStyle && (
+            {!floating && indicatorStyle && (
               <span
                 aria-hidden
                 className="pointer-events-none absolute inset-y-0 rounded-lg bg-ink/7"
@@ -98,11 +101,13 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                ref={(el) => {
-                  if (el) linkRefs.current.set(item.href, el);
-                }}
-                className={`relative rounded-lg px-3.5 py-2 text-sm transition-colors duration-200 ${
-                  itemIsActive(item.href, pathname) ? "text-ink" : "text-muted hover:text-ink"
+                ref={(el) => { if (el) linkRefs.current.set(item.href, el); }}
+                className={`relative rounded-lg px-3.5 py-2 text-sm transition-colors duration-300 ${
+                  floating
+                    ? "text-white/70 hover:text-white"
+                    : itemIsActive(item.href, pathname)
+                    ? "text-ink"
+                    : "text-muted hover:text-ink"
                 }`}
               >
                 {item.label}
@@ -114,7 +119,11 @@ export function SiteHeader() {
           <div className="flex items-center gap-2">
             <a
               href="/connect"
-              className="hidden items-center justify-center rounded-md bg-ink px-4 py-2 text-sm font-semibold text-surface transition-all duration-200 hover:opacity-80 md:inline-flex"
+              className={`hidden items-center justify-center rounded-md px-4 py-2 text-sm font-semibold transition-all duration-300 md:inline-flex ${
+                floating
+                  ? "bg-white/15 text-white hover:bg-white/25 backdrop-blur-sm"
+                  : "bg-ink text-surface hover:opacity-80"
+              }`}
             >
               Connect
             </a>
@@ -124,7 +133,9 @@ export function SiteHeader() {
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
               onClick={() => setMobileOpen((p) => !p)}
-              className="relative flex h-9 w-9 items-center justify-center rounded-lg text-ink transition-colors hover:bg-ink/5 md:hidden"
+              className={`relative flex h-9 w-9 items-center justify-center rounded-lg transition-colors md:hidden ${
+                floating ? "text-white hover:bg-white/10" : "text-ink hover:bg-ink/5"
+              }`}
             >
               <span className="relative block h-3 w-4" aria-hidden>
                 <span
@@ -145,6 +156,9 @@ export function SiteHeader() {
         </div>
       </header>
 
+      {/* Spacer — only on non-home pages to offset sticky header */}
+      {!isHome && <div className="h-18" />}
+
       {/* Full-screen mobile overlay */}
       <div
         aria-hidden={!mobileOpen}
@@ -155,10 +169,7 @@ export function SiteHeader() {
           transition: "opacity 350ms ease",
         }}
       >
-        <nav
-          aria-label="Mobile Primary"
-          className="flex h-full flex-col items-start justify-center px-8"
-        >
+        <nav aria-label="Mobile Primary" className="flex h-full flex-col items-start justify-center px-8">
           <ul className="w-full space-y-1">
             {navItems.map((item, i) => (
               <li
@@ -180,7 +191,6 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
-
             <li
               style={{
                 opacity: mobileOpen ? 1 : 0,
