@@ -13,7 +13,7 @@ function itemIsActive(href: string, pathname: string) {
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
+  const isFloatingHeaderPage = pathname === "/" || pathname === "/testimonials";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [indicatorStyle, setIndicatorStyle] = useState<{ left: number; width: number } | null>(null);
@@ -52,14 +52,14 @@ export function SiteHeader() {
 
   const navItems = NAV_ITEMS.filter((i) => i.href !== "/connect");
 
-  // On home, float over hero until scrolled; on other pages always show pill
-  const floating = isHome && !scrolled;
+  // Float over hero pages until scrolled; on other pages always show pill
+  const floating = isFloatingHeaderPage && !scrolled;
 
   return (
     <>
       <header
         className={`z-50 flex justify-center transition-all duration-500 ${
-          isHome ? "fixed inset-x-0 top-0" : "sticky top-0"
+          isFloatingHeaderPage ? "fixed inset-x-0 top-0" : "sticky top-0"
         } ${floating ? "py-5" : "py-3"}`}
       >
         <div
@@ -157,7 +157,7 @@ export function SiteHeader() {
       </header>
 
       {/* Spacer — only on non-home pages to offset sticky header */}
-      {!isHome && <div className="h-18" />}
+      {!isFloatingHeaderPage && <div className="h-18" />}
 
       {/* Full-screen mobile overlay */}
       <div

@@ -1,132 +1,103 @@
-import { PageHero } from "@/components/page-hero";
+import Image from "next/image";
+import { SharedInquirySection } from "@/components/shared-inquiry-section";
 
-const idealClients = [
-  {
-    title: "Lorem ipsum dolor sit.",
-    description:
-      "Amet consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud.",
-  },
-  {
-    title: "Ut enim ad minim veniam.",
-    description:
-      "Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.",
-  },
-  {
-    title: "Duis aute irure dolor.",
-    description:
-      "In reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.",
-  },
-  {
-    title: "Excepteur sint occaecat.",
-    description:
-      "Cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus.",
-  },
-];
-
-const successOutcomes = [
-  "Lorem ipsum dolor sit amet consectetur adipiscing elit",
-  "Sed do eiusmod tempor incididunt ut labore et dolore",
-  "Ut enim ad minim veniam quis nostrud exercitation",
-  "Duis aute irure dolor in reprehenderit in voluptate",
-];
-
-const notFor = [
-  "Lorem ipsum dolor sit amet consectetur",
-  "Sed do eiusmod tempor incididunt ut labore",
-  "Ut enim ad minim veniam quis nostrud",
-  "Duis aute irure dolor in reprehenderit",
+const prompts = [
+  "Are you grappling with relationship matters: family, friends, work-place or romance?",
+  "Do you have a lot of reasons why you can\u2019t\u2026?",
+  "Are you one of those people who did what you were supposed to do but feel there is a creative muse needing to be nourished inside you?",
+  "Are you using dualistic thought and value paradigms? (success/failure, good/bad, worthy/unworthy?)",
+  "Do you say the words \u201Csupposed to\u201D and \u201Cshould\u201D a lot?",
 ];
 
 export default function WhoAreYouPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Who Are You?"
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-        description="Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam."
-      />
-
-      {/* Client profiles — full bleed editorial list */}
-      <section className="w-full px-4 pb-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-10 border-b border-outline pb-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">Lorem Ipsum</p>
-            <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">Dolor sit amet consectetur?</h2>
+      <section className="relative h-[68vh] min-h-[460px] w-full overflow-hidden">
+        <Image
+          src="/sailboat-from-crowsnest.jpg"
+          alt="Sailboat seen from above at sea"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-linear-to-t from-ink/85 via-ink/35 to-transparent" />
+        <div className="relative mx-auto flex h-full max-w-7xl items-end px-6 pb-14 sm:px-10 sm:pb-18 lg:px-16">
+          <div className="max-w-3xl">
+            <h1 className="font-display text-5xl leading-[1.05] text-white sm:text-6xl lg:text-7xl">
+              Who Are You?
+            </h1>
           </div>
-          <div className="divide-y divide-outline">
-            {idealClients.map((client, index) => (
-              <div
-                key={client.title}
-                className="fade-up grid gap-4 py-12 lg:grid-cols-[2fr_3fr] lg:gap-20"
-                style={{ animationDelay: `${index * 80}ms` }}
+        </div>
+      </section>
+
+      <section className="w-full px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.4fr_1fr]">
+          <div className="rounded-2xl border border-outline bg-surface-strong p-8 shadow-sm shadow-ink/5 sm:p-10 space-y-4">
+            <h2 className="font-display text-4xl text-ink">It&rsquo;s never too late.</h2>
+            <p className="max-w-2xl text-base leading-relaxed text-muted">
+              For some people &ndash; actively working on yourself and addressing issues and struggles can be terrifying.
+            </p>
+            <p className="max-w-2xl text-base leading-relaxed text-muted">
+              While we are all responsible for creating our own lives, we are not however, all in the same circumstances.
+            </p>
+            <p className="max-w-2xl text-base leading-relaxed text-muted">
+              My role is to help invoke in you a deep sense of adventure and demonstrate the fertile possibilities. Yes, sometimes life gets messy and our vision gets blurry — but life can also be fantastic and rewarding. It&rsquo;s never too late.
+            </p>
+          </div>
+          <div className="relative min-h-[280px] overflow-hidden rounded-2xl border border-outline">
+            <Image
+              src="/compass.jpg"
+              alt="Compass on wooden surface"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-ink/55 to-transparent" />
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-ink px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-12 text-xs font-semibold uppercase tracking-[0.25em] text-white/35">Questions to Consider</p>
+          <div className="space-y-0 divide-y divide-white/10">
+            {prompts.map((line) => (
+              <p
+                key={line}
+                className="font-display py-6 text-2xl leading-snug text-white/70 transition-colors duration-200 hover:text-white sm:text-3xl"
               >
-                <h3 className="font-display text-2xl leading-snug text-ink sm:text-3xl">
-                  {client.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted lg:pt-2">{client.description}</p>
-              </div>
+                {line}
+              </p>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Success + Not For — full-bleed warm */}
-      <section className="w-full pb-0">
-        <div className="bg-surface-warm px-4 py-16 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl lg:grid lg:grid-cols-2 lg:gap-20">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/40">Lorem Ipsum</p>
-              <h2 className="mt-5 font-display text-2xl text-ink sm:text-3xl">
-                Dolor sit amet consectetur adipiscing:
-              </h2>
-              <ul className="mt-8 space-y-5">
-                {successOutcomes.map((outcome) => (
-                  <li key={outcome} className="flex items-start gap-4 text-sm text-ink/70">
-                    <span className="mt-0.5 shrink-0 font-display text-base text-ink/25">✓</span>
-                    {outcome}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="mt-14 border-t border-ink/10 pt-14 lg:mt-0 lg:border-l lg:border-t-0 lg:pl-20 lg:pt-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-ink/40">Ut Enim Ad Minim&hellip;</p>
-              <ul className="mt-8 space-y-5">
-                {notFor.map((item) => (
-                  <li key={item} className="flex items-start gap-4 text-sm text-ink/60">
-                    <span className="mt-0.5 shrink-0 text-ink/25">✕</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-10 text-sm text-ink/50">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
+      <section className="w-full px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.3fr]">
+          <div className="relative min-h-[320px] overflow-hidden rounded-2xl border border-outline">
+            <Image
+              src="/rowboat.jpg"
+              alt="Small rowboat on calm water"
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-linear-to-t from-ink/65 to-transparent" />
+          </div>
+          <div className="rounded-2xl border border-outline bg-white/70 p-8 shadow-sm shadow-ink/5 sm:p-10 space-y-4 text-base leading-relaxed text-ink/85">
+            <p>
+              We all know deep down that we can&rsquo;t control everything and everyone around us. What we can do is identify patterns &ndash; we can aim ourselves in a direction and take hold of our lives. We can put a stone down, then another and another, and build a path forwards.
+            </p>
+            <p>
+              After a time, we discover that we are no longer in the same place we started. We can measure a distance traveled. We can see new things on the horizon drawing us toward them.
+            </p>
+            <p>
+              You can deepen your truth and live a conscious life. We are forever recalibrating and making adjustments. You can experience more joy.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CTA — full bleed white */}
-      <section className="w-full px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="fade-up flex flex-col gap-6 border-t border-outline pt-12 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="font-display text-2xl text-ink sm:text-3xl">Lorem ipsum dolor sit amet?</h2>
-              <p className="mt-2 text-sm text-muted">
-                Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-            </div>
-            <a
-              href="/connect"
-              className="shrink-0 inline-flex items-center justify-center rounded-md bg-ink px-7 py-3.5 text-sm font-semibold text-surface transition hover:opacity-80"
-            >
-              Lorem Ipsum
-            </a>
-          </div>
-        </div>
-      </section>
+      <SharedInquirySection />
     </>
   );
 }

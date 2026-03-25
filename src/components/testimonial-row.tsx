@@ -11,9 +11,25 @@ type TestimonialRowProps = {
   index: number;
 };
 
-const PREVIEW_WORDS = 7;
-const CHAR_DELAY = 18;
-const CLOSE_DURATION = 400;
+const PREVIEW_CHARS = 72;
+const CHAR_DELAY = 8;
+const CLOSE_DURATION = 240;
+
+function toParagraphs(quote: string) {
+  const sentences = quote
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(/(?<=[.!?])\s+/);
+
+  if (sentences.length <= 3) return [quote];
+
+  const chunkSize = quote.length > 700 ? 2 : 3;
+  const chunks: string[] = [];
+  for (let i = 0; i < sentences.length; i += chunkSize) {
+    chunks.push(sentences.slice(i, i + chunkSize).join(" "));
+  }
+  return chunks;
+}
 
 function Meta({ name, role, context, duration }: Pick<TestimonialRowProps, "name" | "role" | "context" | "duration">) {
   return (
@@ -38,10 +54,11 @@ export function TestimonialRow({ quote, name, role, context, duration, index }: 
   const [charCount, setCharCount] = useState(0);
   const [tailOpacity, setTailOpacity] = useState(1);
 
-  const words = quote.split(" ");
-  const expandable = words.length > PREVIEW_WORDS;
-  const preview = words.slice(0, PREVIEW_WORDS).join(" ");
-  const tail = expandable ? " " + words.slice(PREVIEW_WORDS).join(" ") : "";
+  const paragraphs = toParagraphs(quote);
+  const displayQuote = paragraphs.join("\n\n");
+  const expandable = displayQuote.length > PREVIEW_CHARS;
+  const preview = expandable ? displayQuote.slice(0, PREVIEW_CHARS).trimEnd() : displayQuote;
+  const tail = expandable ? displayQuote.slice(preview.length) : "";
 
   // Scroll-in reveal
   useEffect(() => {
@@ -51,7 +68,7 @@ export function TestimonialRow({ quote, name, role, context, duration, index }: 
       ([entry]) => {
         if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -60px 0px" }
+      { threshold: 0.01, rootMargin: "0px 0px 140px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -86,11 +103,13 @@ export function TestimonialRow({ quote, name, role, context, duration, index }: 
   const easing = "cubic-bezier(0.16,1,0.3,1)";
   const typed = tail.slice(0, charCount);
   const done = charCount >= tail.length;
+  const openText = `${preview}${typed}`;
+  const openParagraphs = openText.split("\n\n");
 
   const rowStyle = {
     opacity: visible ? 1 : 0,
     transform: visible ? "none" : "translateY(12px)",
-    transition: `opacity 600ms ${easing} ${index * 40}ms, transform 600ms ${easing} ${index * 40}ms`,
+    transition: `opacity 280ms ${easing} ${index * 8}ms, transform 280ms ${easing} ${index * 8}ms`,
   };
 
   const gridClass = "grid grid-cols-1 gap-4 py-10 sm:grid-cols-[12rem_1fr] sm:gap-16 lg:grid-cols-[16rem_1fr]";
@@ -100,8 +119,12 @@ export function TestimonialRow({ quote, name, role, context, duration, index }: 
       <article ref={rowRef}>
         <div className={gridClass} style={rowStyle}>
           <Meta name={name} role={role} context={context} duration={duration} />
-          <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl">
-            &ldquo;{quote}&rdquo;
+          <blockquote className="border-l border-outline/80 pl-4 font-display text-xl leading-relaxed text-ink sm:text-2xl">
+            <div className="space-y-4">
+              {paragraphs.map((paragraph, i) => (
+                <p key={`${name}-${i}`}>{i === 0 ? `“${paragraph}` : paragraph}{i === paragraphs.length - 1 ? "”" : ""}</p>
+              ))}
+            </div>
           </blockquote>
         </div>
       </article>
@@ -115,13 +138,29 @@ export function TestimonialRow({ quote, name, role, context, duration, index }: 
           <Meta name={name} role={role} context={context} duration={duration} />
 
           <div className="relative">
-            <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl">
-              &ldquo;{preview}
-              <span style={{ opacity: tailOpacity, transition: open ? "none" : `opacity ${CLOSE_DURATION}ms ease` }}>
-                {typed}{done ? "\u201d" : ""}
-              </span>
-              <span style={{ opacity: !open && tailOpacity === 0 ? 1 : 0, transition: "opacity 200ms ease 250ms" }} className="text-muted">&hellip;&rdquo;</span>
-            </blockquote>
+            {!open && (
+              <blockquote className="font-display text-xl leading-relaxed text-ink sm:text-2xl">
+                &ldquo;{preview}
+                <span style={{ opacity: tailOpacity, transition: open ? "none" : `opacity ${CLOSE_DURATION}ms ease` }}>
+                  {typed}{done ? "\u201d" : ""}
+                </span>
+                <span style={{ opacity: !open && tailOpacity === 0 ? 1 : 0, transition: "opacity 200ms ease 250ms" }} className="text-muted">&hellip;&rdquo;</span>
+              </blockquote>
+            )}
+
+            {open && (
+              <blockquote className="border-l border-outline/80 pl-4 font-display text-xl leading-relaxed text-ink sm:text-2xl">
+                <div className="space-y-4">
+                  {openParagraphs.map((paragraph, i) => (
+                    <p key={`${name}-${i}`}>
+                      {i === 0 ? `“${paragraph}` : paragraph}
+                      {done && i === openParagraphs.length - 1 ? "”" : ""}
+                      {!done && i === openParagraphs.length - 1 ? "…" : ""}
+                    </p>
+                  ))}
+                </div>
+              </blockquote>
+            )}
 
             <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent">
               <span style={{

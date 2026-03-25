@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { SharedInquirySection } from "@/components/shared-inquiry-section";
 
-const HERO_IMAGE = "";
-const PORTRAIT_IMAGE = "";
+const HERO_IMAGE = "/boat-on-horizon.jpg";
+const PORTRAIT_IMAGE = "/woman-dancing-on-beach-with-reflection-in-wet-sand.jpg";
 
 const services = [
   { title: "Life & Relationships", desc: "You are capable of thriving. Let's explore your story and find the path that feels like yours." },
@@ -19,8 +20,8 @@ const ideas = [
   { word: "Reflect", line: "Gain perspective on where you are." },
   { word: "Vision", line: "Ideas without limits." },
   { word: "Strategy", line: "Figure out what, why, and how." },
-  { word: "Tactical", line: "Clarify the steps to execute." },
-  { word: "Engage", line: "It's time to make it happen." },
+  { word: "Action", line: "Clarify the steps to move forward." },
+  { word: "Engage", line: "Show up, connect with people, and build momentum through real conversations." },
 ];
 
 const whoFor = [
@@ -322,6 +323,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SharedInquirySection />
     </>
   );
 }
