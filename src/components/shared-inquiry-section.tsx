@@ -3,7 +3,7 @@
 export function SharedInquirySection() {
   return (
     <>
-      <section className="w-full px-4 pb-20 sm:px-6 lg:px-8">
+      <section className="w-full px-4 pb-20 pt-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl rounded-3xl border border-outline bg-surface-strong p-6 shadow-xl shadow-ink/8 sm:p-8 lg:p-10">
           <h3 className="mb-6 font-display text-3xl text-ink sm:text-4xl">Let&rsquo;s Connect</h3>
           <div className="rounded-2xl bg-white p-5 ring-1 ring-outline sm:p-7">

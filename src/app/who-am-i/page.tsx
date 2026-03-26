@@ -102,10 +102,10 @@ export default function WhoAmIPage() {
                   <h3 className="mt-3 font-display text-2xl text-ink">I believe you can thrive.</h3>
                   <div className="mt-6 space-y-4 text-sm leading-relaxed text-ink/70">
                     <p>
-                      Grew up in Philadelphia and spent most of life in cities including NYC, LA and SF. These days, home is a small town among redwoods about 20 miles from SF.
+                      I grew up in Philadelphia and spent most of my life in cities — NYC, LA, and SF. These days, home is a small town among redwoods about 20 miles from SF.
                     </p>
                     <p>
-                      Compassionate, open-minded, analytical and creative, with practical experience that supports real change. Looking forward to helping you sort through complexity, harness your energy, and move through doubt, fear or inertia.
+                      I'm compassionate, open-minded, analytical and creative, with practical experience that supports real change. I look forward to helping you sort through complexity, harness your energy, and move through doubt, fear or inertia.
                     </p>
                   </div>
                 </div>

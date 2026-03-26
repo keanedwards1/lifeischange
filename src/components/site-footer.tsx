@@ -18,18 +18,18 @@ export function SiteFooter() {
           <div>
             <p className="font-display text-2xl font-semibold">Life Is Change</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/60">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.
+              One-on-one coaching for life, relationships, business, and creative work. Based in Fairfax, CA — working with people everywhere.
             </p>
             <Link
               href="/connect"
               className="mt-6 inline-flex items-center justify-center rounded-md bg-white px-5 py-2.5 text-sm font-semibold text-brand-strong transition hover:bg-white/90"
             >
-              Lorem Ipsum
+              Begin the conversation
             </Link>
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-white/40">Lorem Ipsum</p>
+            <p className="text-xs font-semibold uppercase tracking-widest text-white/40">Navigate</p>
             <ul className="mt-4 space-y-3">
               {footerLinks.map((item) => (
                 <li key={item.href}>

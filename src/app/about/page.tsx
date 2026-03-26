@@ -8,45 +8,41 @@ const coachingTypes = [
   {
     title: "Life & Relationship",
     paragraphs: [
-      "I will support you and counsel you as an individual and help you to unpack the various components of your life and the relationships that inform your reality.",
+      "I support you as an individual and help you unpack the components of your life and the relationships that shape your reality.",
     ],
     outcomes: [
       "Are you struggling with a narcissistic parent or old wounds?",
-      "Are you into a partnership but feel you are taken for granted or not being truly seen?",
-      "Are you truly seen? Acknowledged? Accepted? Cherished?",
-      "Do you wish to have a better life work balance?",
+      "Are you in a partnership where you feel unseen or taken for granted?",
+      "Do you wish to have a better life-work balance?",
       "Are you able to self-care? Express yourself creatively?",
     ],
     closing: [
-      "You can make key shifts in your lifestyle. You can have healthier relationships. You can let go of self-limiting voices and overcome fear-based inertia. It starts with you.",
-      "I offer you tools, approaches, and perspective that can get you out of the feedback loop. I help you gain clarity, find your own truth, and work your way forward so you can be proactive and thrive. And if you are working through painful confusion I will support you however you need for however long you need it.",
+      "You can make key shifts in your lifestyle, build healthier relationships, and let go of self-limiting voices. I help you gain clarity, find your own truth, and move forward. If you're working through painful confusion, I'll support you for however long you need.",
       "Tell me your story. Be heard. Direct the change.",
     ],
   },
   {
     title: "Business, Start-up & Non-Profit",
     paragraphs: [
-      "Let's break things down. What is it you want to accomplish? Who is it for? Why do you want to bring it about? What will it take?",
-      "Whether it's for-profit or not-for-profit – many principles of success are the same.",
+      "What do you want to accomplish? Who is it for? Why does it matter? Whether for-profit or not — many principles of success are the same.",
       "Together we will:",
     ],
     outcomes: [
       "Explore and clarify your vision.",
       "Develop a strategy.",
       "Identify a tactical plan.",
-      "Monitor that plan and course-correct as needed.",
+      "Monitor and course-correct as needed.",
     ],
     closing: [
-      "Together we identify your market/audience, develop your brand and communicate your uniqueness. Demonstrate benefits and efficacy.",
-      "Let's bring it to life!",
+      "We'll identify your audience, develop your brand, and communicate your uniqueness. Let's bring it to life.",
     ],
   },
   {
     title: "Career",
     paragraphs: [
-      "If you are job searching and are in need of a career coach, I will help you identify where you are and where you want to be. We will review your experience, talents, and skills and explore how you can move forward and leverage up in your current career or stage a shift to a new direction.",
-      "I will help prepare your interviewing skills, assist with utilizing LinkedIn and help you research any industry or field and determine if you need additional training or experience. I will review and help you edit your resume and cover letters, and advise you on how to get on an employers radar and expand your network.",
-      "I will also help you identify your passions. People tend to be happier and have better outcomes when they pursue things that they care about. If you feel stuck and can't see how to get from where you are to somewhere else, I can help get out of the stuckness. I'm really good at helping find new possibilities you haven't considered and supporting you through that.",
+      "I'll help you identify where you are and where you want to be — whether that means moving forward in your current field or shifting to something new.",
+      "We'll review your experience, sharpen your interview skills, refine your resume, and expand your network. I'll also help you research industries, leverage LinkedIn, and identify any gaps in training.",
+      "If you feel stuck, I'm good at finding new possibilities you haven't considered yet — and supporting you through them.",
     ],
     outcomes: [],
     closing: [],
@@ -54,12 +50,9 @@ const coachingTypes = [
   {
     title: "Creative Integration Coaching™",
     paragraphs: [
-      "I work with a lot of artists and creatives — people who are involved with spiritual development, health and wellness, academics, creative entrepreneurs – from yogini's to urban gardeners, from avante garde digital artists to singer-songwriters, from spiritual guides to PhD candidates.",
-      "People who create original work, and form a life composite that focuses on more autonomy, living on their own terms grapple with a unique set of challenges.",
-      "\u201CAre What They Do\u201D people seek and require a particular kind of, and emphasis on \u2013 integration. Figuring out how to be self-generative, to create the work or experience or development \u2013 and generate the resources.",
-      "If you are an artist I will help you figure out where you are with your work and professional and artistic life \u2013 how to expand your audience reach or generate resources \u2013 I can help you edit your polemic, find a patron or launch a new social strategy.",
-      "If you are working on a dissertation, or starting a school of some kind, or creating a community resource for organic food or herbal remedies, or a healer creating transformative experiences for others \u2013 I will assist you forming a fully integrated life while working on your authentic voice and body of work.",
-      "You can be fully integrated.",
+      "I work with artists, creatives, and people building lives on their own terms — from singer-songwriters and digital artists to PhD candidates, healers, and creative entrepreneurs.",
+      "People who \u201CAre What They Do\u201D face a unique challenge: how to be self-generative, do the work, and still generate the resources to sustain it.",
+      "I'll help you find where you are with your work, expand your reach, develop your voice, and build a fully integrated life around what matters most to you.",
     ],
     outcomes: [],
     closing: [],
@@ -104,7 +97,7 @@ const sessionDetails = [
     label: "Duration",
     value: "As needed",
     detail:
-      "Sessions typically run 1\u20132 hours. But sometimes you just need 17 minutes to get realigned \u2014 I track time and bill at the end of the month.",
+      "A full session is 90 minutes. You can also schedule in 30-minute increments, or just hop on for 15\u201320 minutes with no obligation. I track time and pro-rate.",
   },
   {
     label: "Format",
@@ -114,9 +107,9 @@ const sessionDetails = [
   },
   {
     label: "Availability",
-    value: "Short notice welcome",
+    value: "7 days a week",
     detail:
-      "I\u2019m a bit like an old fashioned \u2018country doc\u2019 with his black bag down the road. I know you, and I\u2019m here when you need me.",
+      "I\u2019m available 7 days a week and most hours — with advance scheduling or in a short-term crisis. I\u2019m a bit like an old fashioned \u2018country doc\u2019 with his black bag down the road. I know you, and I\u2019m here when you need me.",
   },
   {
     label: "Commitment",
@@ -125,10 +118,10 @@ const sessionDetails = [
       "Some people work with me for a specific focus area. Others for their entire life stream. You set the pace and scope.",
   },
   {
-    label: "Billing",
-    value: "End of month",
+    label: "Payment",
+    value: "Flexible",
     detail:
-      "I track time across all interactions \u2014 long sessions, short check-ins \u2014 and bill at the end of the month.",
+      "I accept PayPal, Venmo, cash, and once I know you, check. If budget is tight, let\u2019s talk \u2014 I\u2019ll do my best to find an arrangement that works.",
   },
 ];
 
@@ -233,13 +226,13 @@ export default function AboutPage() {
           <div className="grid gap-10 border-t border-outline pt-12 lg:grid-cols-2 lg:gap-20">
             <div className="space-y-4 text-sm leading-relaxed text-muted">
               <p>
-                Life is always happening and change is always taking place whether we remain aware of it or not. I help you to set your intentions and direct the change in your life.
-              </p>
-              <p>
                 I have worked effectively with and counseled a wide range of persons, including people of all genders, of varying ethnic and cultural backgrounds, ranging in age, and with a diverse set of interests and circumstances living all over the world.
               </p>
               <p>
                 As human beings we are often extreme creatures of habit – and often continue to do that which is most familiar over that which is most beneficial. Many of us are imbued with contradictions – however those contradictions are also part of what make us interesting and reflect the richness of our individuality.
+              </p>
+              <p>
+                It is possible to attain health and balance with mind, body and soul, to develop positive relationships and to spend your time doing things that matter to you. You can thrive.
               </p>
             </div>
             <div>
@@ -258,9 +251,6 @@ export default function AboutPage() {
                   </li>
                 ))}
               </ul>
-              <p className="mt-6 text-sm leading-relaxed text-muted">
-                It is possible to attain health and balance with mind, body and soul, to develop positive relationships and to spend your time doing things that matter to you. You can thrive.
-              </p>
             </div>
           </div>
         </div>
@@ -327,13 +317,13 @@ export default function AboutPage() {
             </h2>
             <div className="mt-8 space-y-4 text-sm leading-relaxed text-white/60">
               <p>
-                Most people benefit from some form of one-on-one counseling. Our lives are filled with different relationships and those dynamics can be provocative. It&rsquo;s hard sometimes even for well-intended friends and family to be objective. They have their own baggage and pre-existing views of how they already see you.
+                Most people benefit from one-on-one counseling. Even well-intended friends and family struggle to be objective — they have their own history with you.
               </p>
               <p>
-                A good one-on-one dialog offers a safe space where you can tell your story without judgment and be acknowledged. It provides a layer of objectivity while also being able to grasp the unique conditions of your life.
+                A good one-on-one dialog offers a safe space to tell your story without judgment, with someone who can be objective while also understanding the unique conditions of your life.
               </p>
               <p className="font-medium text-white/90">
-                Coaching is also useful for practical things like career, business and non-profit aspirations. An effective coach has a lot of experience and information and can help you create a strategic plan. The best practitioners possess a deep understanding of the human condition and offer empathy, compassion, and a belief in your capacity to thrive.
+                Coaching is also practical — for career, business, and non-profit work. The best coaches bring real experience, help you build a strategic plan, and hold a genuine belief in your capacity to thrive.
               </p>
             </div>
             <a
@@ -353,7 +343,7 @@ export default function AboutPage() {
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">Session Details</p>
             <h2 className="mt-3 font-display text-3xl text-ink sm:text-4xl">I offer maximum flexibility.</h2>
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-              I&rsquo;m a bit like an old fashioned &lsquo;country doc&rsquo; with his black bag down the road. I know you, I&rsquo;m very flexible and can often be on short notice, or just jump on the phone for however long you need. I have a great 1-2 hour session with someone on a Monday and they are charged up and after a few days they get wobbly and need a &lsquo;booster&rsquo;, so we just hop on the phone for 17 minutes and get realigned. I track time and bill at the end of the month.
+              I&rsquo;m a bit like an old fashioned &lsquo;country doc&rsquo; with his black bag down the road. I know you, I&rsquo;m very flexible and can often be available on short notice. Sometimes I have a great 90-minute session with someone on a Monday and after a few days they get wobbly and need a &lsquo;booster&rsquo; — so we just hop on the phone for 17 minutes and get realigned. I track time and pro-rate.
             </p>
           </div>
           <div className="divide-y divide-outline">

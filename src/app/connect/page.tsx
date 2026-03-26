@@ -44,9 +44,9 @@ export default function ConnectPage() {
 
             <ul className="mt-10 space-y-5">
               {[
-                "Supportive, non-judgmental space",
-                "Clear strategy and practical next steps",
-                "Flexible sessions by phone or in person",
+                "Someone genuinely in your corner",
+                "Clarity on what to do and how to move",
+                "Available 7 days a week, by phone or in person",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4 text-sm text-white/65">
                   <span className="mt-1.5 shrink-0 h-px w-4 bg-white/25" />

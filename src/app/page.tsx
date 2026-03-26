@@ -18,10 +18,10 @@ const services = [
 const ideas = [
   { word: "Share", line: "Tell your story. All of it." },
   { word: "Reflect", line: "Gain perspective on where you are." },
-  { word: "Vision", line: "Ideas without limits." },
-  { word: "Strategy", line: "Figure out what, why, and how." },
-  { word: "Action", line: "Clarify the steps to move forward." },
-  { word: "Engage", line: "Show up, connect with people, and build momentum through real conversations." },
+  { word: "Envision", line: "Ideas without limits." },
+  { word: "Strategize", line: "Figure out what, why, and how." },
+  { word: "Take Action", line: "The conversation becomes momentum." },
+  { word: "Engage", line: "Show up in your community and build real connections." },
 ];
 
 const whoFor = [
@@ -200,7 +200,7 @@ export default function Home() {
           {whoFor.map((item, i) => (
             <div
               key={item.label}
-              className="group flex flex-1 flex-col items-center justify-center gap-3 border-r border-outline px-2 py-10 transition-all duration-300 last:border-r-0 hover:bg-accent-soft"
+              className={`group flex flex-1 flex-col items-center justify-center gap-3 border-r border-outline px-2 py-10 transition-all duration-300 last:border-r-0 ${item.isYou ? "hover:bg-[#FDF3D0]" : "hover:bg-accent-soft"}`}
             >
               <div
                 className={`relative transition-all duration-300 group-hover:scale-110 ${
@@ -249,7 +249,7 @@ export default function Home() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/25">How we work</p>
           <h2 className="mt-3 font-display text-4xl text-white sm:text-5xl">
             Not steps.<br />
-            <em className="italic text-white/35">Ideas.</em>
+            <em className="italic text-white/35">A conversation.</em>
           </h2>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/30">
             These aren't a method. They're six things that tend to happen when two people are honest with each other.
@@ -306,13 +306,13 @@ export default function Home() {
           <span aria-hidden className="select-none font-display leading-none text-white/5" style={{ fontSize: "9rem" }}>&ldquo;</span>
           <blockquote className="-mt-12">
             <p className="font-display text-3xl leading-snug text-white sm:text-4xl lg:text-5xl lg:leading-tight">
-              The moment I started asking better questions, everything started moving differently.
+              &hellip;He helped me discover that my true passion lay in being an entrepreneur&hellip; 6 years later, with his encouragement and coaching, I went on to open my business, which has been a huge success. My business employs 20 people and generates $600,000+ in annual revenue.
             </p>
             <footer className="mt-10 flex items-center gap-5">
               <div className="h-px w-10 bg-white/15" />
               <div>
-                <p className="text-sm font-semibold text-white">A former client</p>
-                <p className="text-xs text-white/35">6 months of coaching</p>
+                <p className="text-sm font-semibold text-white">Sarah Duffy</p>
+                <p className="text-xs text-white/35">Owner, Buff Beauty Bar &middot; New Orleans, Louisiana</p>
               </div>
             </footer>
           </blockquote>
